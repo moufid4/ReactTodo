@@ -6,6 +6,8 @@ var TodoSearch = require('TodoSearch');
 var TodoApp = React.createClass({
   getInitialState: function() {
     return {
+      showCompleted: false,
+      searchText: '',
       todos: [
         {
           id: 1,
@@ -29,6 +31,12 @@ var TodoApp = React.createClass({
   handleAddTodo: function (text) {
     // console.log('handleAddTodo', text)
     alert('new todo: ' + text);
+  },
+  handleSearch: function (showCompleted, searchText) {
+    this.setState({
+      showCompleted: showCompleted,
+      searchText: searchText.toLowerCase()
+    });
   },
   render: function() {
     var {todos} = this.state;
