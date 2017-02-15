@@ -1,6 +1,6 @@
 var React = require('react');
 
-var TodoList = React.createClass({
+var Todo = React.createClass({
 
   render: function() {
     return (
@@ -12,4 +12,4 @@ var TodoList = React.createClass({
 
 });
 
-module.exports = TodoList;
+module.exports = Todo;
