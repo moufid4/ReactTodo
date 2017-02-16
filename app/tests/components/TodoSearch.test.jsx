@@ -7,7 +7,7 @@ var TestUtils = require('react-addons-test-utils');
 var TodoSearch = require('TodoSearch');
 
 describe('TodoSearch', ()=> {
-  it('should exist', => {
+  it('should exist', () => {
     expect(TodoSearch).toExist();
   });
 
@@ -19,10 +19,19 @@ describe('TodoSearch', ()=> {
     todoSearch.refs.searchText.value = searchText;
     TestUtils.Simulate.change(todoSearch.refs.searchText);
 
-    expect(spy).toNotHaveBeenCalled(false, 'Dog');
-  });
+    expect(spy).toHaveBeenCalledWith(false, 'Dog');
+  }); 
 
   it('should call onSearch with proper checked value', ()=> {
+    var searchText = 'Dog';
+    var spy = expect.createSpy();
+    var todoSearch = TestUtils.renderIntoDocument(<TodoSearch onSearch={spy}/>);
 
+    todoSearch.refs.showCompleted.checked = true;
+    todoSearch.refs.searchText.value = searchText;
+
+    TestUtils.Simulate.change(todoSearch.refs.showCompleted);
+
+    expect(spy).toHaveBeenCalledWith(true, 'Dog');
   });
 });
