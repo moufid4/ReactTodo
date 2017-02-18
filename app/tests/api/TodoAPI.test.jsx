@@ -82,14 +82,14 @@ describe('TodoAPI', () => {
       expect(filteredTodos.length).toBe(3);
     });
 
-    it('shoudl return only non-completed items when showCompleted is false', () => {
+    it('should return only non-completed items when showCompleted is false', () => {
       var filteredTodos = TodoAPI.filterTodos(todos, false, '');
 
       expect(filteredTodos.length).toBe(1);
     });
 
     it('should sort by completed status', () => {
-      var filteredTodos = TodoAPI.filteredTodos(todos, true, '');
+      var filteredTodos = TodoAPI.filterTodos(todos, true, '');
 
       expect(filteredTodos[0].completed).toBe(false);
     });
