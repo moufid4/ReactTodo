@@ -81,5 +81,11 @@ describe('TodoAPI', () => {
 
       expect(filteredTodos.length).toBe(3);
     });
+
+    it('shoudl return only non-completed items when showCompleted is false', () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, false, '');
+
+      expect(filteredTodos.length).toBe(1);
+    });
   });
 });
