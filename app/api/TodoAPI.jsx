@@ -11,16 +11,31 @@ module.exports = {
   getTodos: function () {
     var stringTodos = localStorage.getItem('todos');
     var todos = [];
+
     try {
       todos = JSON.parse(stringTodos);
     } catch (e) {
 
-    }
+    };
 
     if ($.isArray(todos)) {
       return todos;
     } else {
       return [];
-    }
+    };
+  },
+
+  filterTodos: function (todos, showCompleted, searchText) {
+    var filteredTodos = todos;
+
+    // Filter by showCompleted
+    filteredTodos = filteredTodos.filter((todo) => {
+      return !todo.completed || showCompleted;
+    });
+
+    // Filter by searchText
+
+    // Sort todos with non-completed first
+    return filteredTodos;
   }
 };
