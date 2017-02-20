@@ -34,6 +34,19 @@ module.exports = {
     });
 
     // Filter by searchText
+    if (searchText !== '') {
+      filteredTodos = filteredTodos.filter((todo) => {
+          // if (todo.text.toLowerCase() === searchText.toLowerCase()) {
+          //   return todo;
+          // }
+          // if (todo.text.toLowerCase().search(searchText.toLowerCase()) !==-1) {
+          //   return todo;
+          // }
+          if (todo.text.toLowerCase().indexOf(searchText) !== -1) {
+            return todo;
+          }
+      });
+    }
 
     // Sort todos with non-completed first
     filteredTodos.sort((a, b) => {
