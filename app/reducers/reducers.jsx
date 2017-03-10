@@ -5,7 +5,7 @@ export var searchTextReducer = (state = '', action) => {
 	switch (action.type) {
 		case 'SET_SEARCH_TEXT':
 			return action.searchText;
-		default: 
+		default:
 			return state;
 	};
 };
@@ -27,16 +27,13 @@ export var todosReducer = (state = [], action) => {
 				action.todo
 			];
 
-		case 'TOGGLE_TODO':
+		case 'UPDATE_TODO':
 			return state.map((todo) => {
 				if (todo.id === action.id) {
-					var nextCompleted = !todo.completed;
-
 					return {
 						...todo,
-						completed: nextCompleted,
-						completedAt: nextCompleted ? moment().unix() : undefined
-					};
+						...action.updates
+					}
 				} else {
 					return todo;
 				};
@@ -47,7 +44,7 @@ export var todosReducer = (state = [], action) => {
 				...action.todos
 			];
 
-		default: 
+		default:
 			return state;
 	};
 };
